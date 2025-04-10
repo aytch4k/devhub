@@ -1,0 +1,48 @@
+# Git
+.git
+.gitattributes
+.gitignore
+.git-blame-ignore-revs
+
+# Build output
+.build
+out
+
+# Node modules
+node_modules
+
+# VS Code specific
+.vscode
+.vscode-test
+
+# Logs
+*.log
+npm-debug.log*
+
+# Dependency directories
+.npm
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# dotenv environment variable files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~

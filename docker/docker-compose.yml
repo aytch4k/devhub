@@ -1,0 +1,49 @@
+version: '3.8'
+
+services:
+  vscode-build:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ..:/app
+      - vscode-node-modules:/app/node_modules
+      - vscode-build-output:/app/.build
+    environment:
+      - VSCODE_ARCH=x64
+      - npm_config_arch=x64
+    command: npm run compile
+
+  vscode-dev:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ..:/app
+      - vscode-node-modules:/app/node_modules
+      - vscode-build-output:/app/.build
+    environment:
+      - VSCODE_ARCH=x64
+      - npm_config_arch=x64
+      - DISPLAY=${DISPLAY:-:0}
+    network_mode: host
+    command: npm run watch
+
+  vscode-run:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ..:/app
+      - vscode-node-modules:/app/node_modules
+      - vscode-build-output:/app/.build
+    environment:
+      - VSCODE_ARCH=x64
+      - npm_config_arch=x64
+      - DISPLAY=${DISPLAY:-:0}
+    network_mode: host
+    command: npm run electron
+
+volumes:
+  vscode-node-modules:
+  vscode-build-output:
